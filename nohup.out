@@ -1,0 +1,45 @@
+This backend is only for XRandR 1.1, your version is:  1 . 4 
+This backend is only for XRandR 1.1, your version is:  1 . 4 
+This backend is only for XRandR 1.1, your version is:  1 . 4 
+
+(firefox:3676): GLib-GObject-CRITICAL **: g_object_unref: assertion 'object->ref_count > 0' failed
+
+(firefox:3676): GLib-GObject-CRITICAL **: g_object_unref: assertion 'object->ref_count > 0' failed
+
+(firefox:3676): Gtk-CRITICAL **: gtk_widget_get_allocation: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(firefox:3676): Gtk-CRITICAL **: gtk_widget_get_allocation: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(firefox:3676): Gtk-CRITICAL **: gtk_widget_get_allocation: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(firefox:3676): Gtk-CRITICAL **: gtk_widget_get_allocation: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(firefox:3676): Gtk-CRITICAL **: gtk_widget_get_allocation: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(firefox:3676): Gtk-CRITICAL **: gtk_widget_get_allocation: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(firefox:3676): Gtk-CRITICAL **: gtk_widget_get_allocation: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(firefox:3676): Gtk-CRITICAL **: gtk_widget_get_allocation: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(firefox:3676): Gtk-CRITICAL **: gtk_widget_get_allocation: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(firefox:3676): Gtk-CRITICAL **: gtk_widget_get_allocation: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(firefox:3676): Gtk-CRITICAL **: gtk_widget_get_allocation: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(firefox:3676): Gtk-CRITICAL **: gtk_widget_get_allocation: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(firefox:3676): Gtk-CRITICAL **: gtk_widget_get_allocation: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(firefox:3676): Gtk-CRITICAL **: gtk_widget_get_allocation: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(firefox:3676): Gtk-CRITICAL **: gtk_widget_get_allocation: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(firefox:3676): Gtk-CRITICAL **: gtk_widget_get_allocation: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(firefox:3676): Gtk-CRITICAL **: gtk_widget_get_allocation: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(firefox:3676): Gtk-CRITICAL **: gtk_widget_get_allocation: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(firefox:3676): Gtk-CRITICAL **: gtk_widget_get_allocation: assertion 'GTK_IS_WIDGET (widget)' failed
