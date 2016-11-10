@@ -17,10 +17,10 @@ function [ F ] = sevenpoint( pts1, pts2, M )
 % norm2 = repmat(sqrt(sum(abs(pts2).^2,2)),1,2);
 % 
 % pts1 = pts1./norm1;
-% pts2 = pts2./norm2;
+% pts2 = pts2./norm2;   
 
 pts1 = pts1(1,:)/M;
-pts1 = pts1(2,:)/M;
+pts1 = pts1(2,:)/M;         
 
 pts2 = pts2(1,:)/M;
 pts2 = pts2(2,:)/M;
