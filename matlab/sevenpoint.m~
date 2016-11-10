@@ -19,19 +19,33 @@ function [ F ] = sevenpoint( pts1, pts2, M )
 % pts1 = pts1./norm1;
 % pts2 = pts2./norm2;
 
-pts1 = pts1(1,:)/M(2);
-pts1 = pts1(2,:)/M(1);
+pts1 = pts1(1,:)/M;
+pts1 = pts1(2,:)/M;
 
-pts2 = pts2(1,:)/M(2);
-pts2 = pts2(2,:)/M(1);
+pts2 = pts2(1,:)/M;
+pts2 = pts2(2,:)/M;
 
 U = [pts2(1,:)*pts1(1,:) pts2(1,:)*pts1(2,:) pts2(1,:) pts2(2,:)*pts1(1,:) pts2(2,:)*pts1(2,:) pts1(1,:) pts1(2,:) ones(size(pts1,1),1)];
 
 [~,~,V] = svd(U);
 
-F = V(:,end);
+F1 = V(:,end-1);
+F2 = V(:,end);
 
-F = reshape(F,3,3)';
+F1 = reshape(F1,3,3)';
+F2 = reshape(F2,3,3)';
+
+syms lambda
+
+eq = det(F1 + lambda*F2);
+
+solution = solve(eq);
+
+for i = 1:length(solution)
+    F{i,1} = ()
+    S2(:,end) = zeros(size(S2,1),1);
+    F = U2*S2*V2';
+    F = refineF(F,pts1,pts2);
 
 end
 
