@@ -19,6 +19,8 @@ for i = 1:numel(F)
     M2s{i,1} = camera2(E{i,1});
 end
 
+M1 = [eye(3) zeros(3,1)];
+
 [P, error] = triangulate(M1, pts1, M2, pts2);
 
 
