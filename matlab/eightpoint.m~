@@ -22,7 +22,7 @@ function [ F ] = eightpoint( pts1, pts2, M )
 pts1 = pts1/M;
 pts2 = pts2/M;
 
-U = [pts2(:,1).*pts1(:,1)  pts2(:,1).*pts1(:,2)  pts2(:,1)  pts2(:,2).*pts1(:,1)  pts2(:,2).*pts1(:,2)  pts2(:,2)  pts1(:,1)  pts1(:,2)  ones(size(pts1,1),1)];
+U = [pts2(:,1).*pts1(:,1)  pts2(:,1).*pts1(:,2)  pts2(:,1)  pts2(:,2).*pts1(:,1)  pts2(:,2).*pts1(:,2)  pts1(:,1)  pts1(:,2)  ones(size(pts1,1),1)];
 
 [U1,S1,V1] = svd(U);
 

@@ -36,7 +36,7 @@ syms lambda
 
 eq = det((1-lambda)*F1 + lambda*F2);
 
-solution = double(solve(eq)) 
+solution = solve(eq);
 
 F = cell(length(solution),1);
 
@@ -49,5 +49,5 @@ for i = 1:length(solution)
     nM = [M 0 0;
           0 M 0;
           0 0 1];
-    F{i,1} = nM'*Ftemp*nM;
+    F{i,1} = nM'*F*nM;
 end

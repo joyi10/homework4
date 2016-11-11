@@ -13,11 +13,11 @@ load data/intrinsics.mat
 M = max(size(im1,1),size(im1,2));
 
 F = sevenpoint(pts1, pts2, M);
+size()
 
-for i = 1:numel(F)
-    E{i,1} = essentialMatrix(F{i,1}, K1, K2);
-    M2s{i,1} = camera2(E{i,1});
-end
+E = essentialMatrix(F, K1, K2);
+
+M2s = camera2(E);
 
 [P, error] = triangulate(M1, pts1, M2, pts2);
 
