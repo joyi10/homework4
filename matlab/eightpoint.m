@@ -28,7 +28,7 @@ U = [pts2(:,1).*pts1(:,1)  pts2(:,1).*pts1(:,2)  pts2(:,1)  pts2(:,2).*pts1(:,1)
 
 F = V1(:,end);
 
-F = reshape(F,3,3)';
+F = reshape(F,3,3);
 
 % do svd of F and then make last eigenvalue 0 and multiply everything back.
 

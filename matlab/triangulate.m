@@ -28,7 +28,7 @@ D = [x1;
  
 [U,S,V] = svd(D);
 P = V(:,end);
-error = S1(3,3)/S1(4,4);
+error = S(3,3)/S(4,4);
 
 
 end
