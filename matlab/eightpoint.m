@@ -28,21 +28,21 @@ U = [pts2(:,1).*pts1(:,1)  pts2(:,1).*pts1(:,2)  pts2(:,1)  pts2(:,2).*pts1(:,1)
 
 F = V1(:,end);
 
-F = reshape(F,3,3);
+F = reshape(F,3,3)';
 
 % do svd of F and then make last eigenvalue 0 and multiply everything back.
 
 [U2,S2,V2] = svd(F);
 
-S2(:,end) = zeros(size(S2,1),1);
+S2(end,end) = 0;
 
 F = U2*S2*V2';
 
 F = refineF(F,pts1,pts2);
 
-nM = [M 0 0;
-      0 M 0;
-      0 0 1];
+nM = [1/M 0   0;
+      0   1/M 0;
+      0   0   1];
   
 F = nM'*F*nM;
 

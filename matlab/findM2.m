@@ -16,6 +16,7 @@ F = sevenpoint(pts1, pts2, M);
 
 for i = 1:numel(F)
     E{i,1} = essentialMatrix(F{i,1}, K1, K2);
+    Fnow = F{i,1}
     M2s{i,1} = camera2(E{i,1});
     figure
     displayEpipolarF(im1, im2, F{i,1})
