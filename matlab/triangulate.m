@@ -1,4 +1,4 @@
-function [ P, error ] = triangulate( M1, p1, M2, p2 )
+function [P, error] = triangulate( M1, p1, M2, p2 )
 % triangulate:
 %       M1 - 3x4 Camera Matrix 1
 %       p1 - Nx2 set of points
