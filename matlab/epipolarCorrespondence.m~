@@ -37,7 +37,6 @@ patch1 = w.*im1(X,Y);
 w = fspecial('gaussian',[2*window+1,2*window+1],2);
 
 error = 1000;
-threshold =5;
 
 for i = 1+window:size(im2,2)-window
    x2temp = round(-line(2)*i - line(3));
@@ -45,9 +44,8 @@ for i = 1+window:size(im2,2)-window
    Y2 = i-window:i+window;
    patch2 = w.*im2(X2,Y2);
    Temp_error = norm(patch2 - patch1);
-   % check if error is smaller than before and if distance between points
-   % is smaller than threshold
-   if (Temp_error < error) && (norm([x1-x2temp y1-i]) < threshold)
+   % check if err
+   if (Temp_error < error) & (norm() < 5)
        error = Temp_error;
        x2 = x2temp;
        y2 = i;
