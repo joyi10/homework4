@@ -13,7 +13,7 @@ function [ x2temp, y2 ] = epipolarCorrespondence( im1, im2, F, x1, y1 )
 %           Save F, pts1, and pts2 used to generate view to q2_6.mat
 %
 %           Explain your methods and optimization in your writeup
-%%
+%% Initialize
 
 % Line can be computed with one point as the other point lies at the origin
 % Format as following: [x y z]*[a b c]';
@@ -22,35 +22,43 @@ line = F*[x1 y1 1]'; % [a b c]
 % Normalize
 % line = line./sqrt(x1^2 + y1^2);
 
-line = line/line(1);
+line = line/line(1)
 
 % use one line and dont sweep along x. Sweep along y because its very
 % vertical
 
 % Apply window
-window = 10;
-X1 = x1-window:x1+window;
-Y1 = y1-window:y1+window;
-patch1 = w.*im1(X,Y);
+win = 10;
 
 % Gaussian Filter
-w = fspecial('gaussian',[2*window+1,2*window+1],2);
+w = fspecial('gaussian',[2*win+1,2*win+1],2);
+
+X1 = round(x1-win:x1+win);
+Y1 = round(y1-win:y1+win);
+
+%  im1(X1,Y1)
+patch1 = w.*im1(X1,Y1);
+
 
 error = 1000;
-threshold =5;
+threshold =30;
 
-for i = 1+window:size(im2,2)-window
-   x2temp = round(-line(2)*i - line(3));
-   X2 = x2temp-window:x2temp+window;
-   Y2 = i-window:i+window;
-   patch2 = w.*im2(X2,Y2);
-   Temp_error = norm(patch2 - patch1);
-   % check if error is smaller than before and if distance between points
-   % is smaller than threshold
-   if (Temp_error < error) && (norm([x1-x2temp y1-i]) < threshold)
-       error = Temp_error;
-       x2 = x2temp;
-       y2 = i;
+for i = 1+win:size(im2,2)-win
+   x2temp = round(line(2)*i + line(3));
+   X2 = round(x2temp-win:x2temp+win)
+   Y2 = round(i-win:i+win)
+   
+   if (sum(X2 <= 0) == 0) && (sum(X2 > size(im2,1)) == 0) 
+       	patch2 = w.*im2(X2,Y2);
+	Temp_error = norm(patch2 - patch1);
+	% check if error is smaller than before and if distance between points
+	% is smaller than threshold
+	norm([x1-x2temp y1-i])
+	if (Temp_error < error) && (norm([x1-x2temp y1-i]) < threshold)
+        	error = Temp_error;
+       		x2 = x2temp;
+       		y2 = i
+   	end
    end
 end
 %%

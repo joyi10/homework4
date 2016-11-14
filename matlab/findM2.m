@@ -3,6 +3,8 @@
 %       2. Obtain the correct M2
 %       3. Save the correct M2, p1, p2, R and P to q2_5.mat
 
+%% Init
+
 im1 = im2double(imread('im1.png'));
 im2 = im2double(imread('im2.png'));
 load data/some_corresp.mat
@@ -38,7 +40,7 @@ M2s = camera2(E);
 figure
 displayEpipolarF(im1, im2, F)
 
-%% 
+%% Select M2 
 
 M1 = [eye(3) zeros(3,1)];
  
