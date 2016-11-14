@@ -5,9 +5,6 @@ load data/some_corresp.mat
 load data/intrinsics.mat
 M = max(size(im1,1),size(im1,2));   
 
-
-
-
 %% Run Epipolar
 
 F = eightpoint(pts1, pts2, M);
