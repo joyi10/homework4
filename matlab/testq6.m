@@ -8,6 +8,5 @@ M = max(size(im1,1),size(im1,2));
 %% Run Epipolar
 
 F = eightpoint(pts1, pts2, M);
-[coordsIM1, coordsIM2] = epipolarMatchGUI(im1, im2, F)
-
-
+[coordsIM1, coordsIM2] = epipolarMatchGUI(im1, im2, F);
+save('q2_6.mat','F','pts1','pts2')

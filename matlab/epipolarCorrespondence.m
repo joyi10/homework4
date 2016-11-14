@@ -18,14 +18,13 @@ function [ x2temp, y2 ] = epipolarCorrespondence( im1, im2, F, x1, y1 )
 % Line can be computed with one point as the other point lies at the origin
 % Format as following: [x y z]*[a b c]';
 
-[sy,sx]= size(im2);
 % line = F*[x1 y1 1]'; % [a b c]
 
 l = [x1 y1 1]*F; % [a b c]
 % Normalize
 % s = l./sqrt(x1^2 + y1^2);
 
-l = l/l(1)
+l = l/l(1);
 
  % l = l./s
 
@@ -59,17 +58,17 @@ patch1 = w.*im1(X1,Y1);
 error = 1000;
 threshold =10;
 
+
 for i = 1+win:size(im2,2)-win
   x2temp = round(-l(2)*i - l(3));
-  X2 = round(x2temp-win:x2temp+win)
-   Y2 = round(i-win:i+win)
+  X2 = round(x2temp-win:x2temp+win);
+  Y2 = round(i-win:i+win);
    
    if (sum(X2 <= 0) == 0) && (sum(X2 > size(im2,1)) == 0) 
        	patch2 = w.*im2(X2,Y2);
 	Temp_error = norm(patch2 - patch1);
 	% check if error is smaller than before and if distance between points
 	% is smaller than threshold
-	norm([x1-x2temp y1-i])
 	if (Temp_error < error) && (norm([x1-x2temp y1-i]) < threshold)
         	error = Temp_error;
        		x2 = x2temp;
