@@ -18,16 +18,12 @@ function [ x2temp, y2 ] = epipolarCorrespondence( im1, im2, F, x1, y1 )
 % Line can be computed with one point as the other point lies at the origin
 % Format as following: [x y z]*[a b c]';
 
-% line = F*[x1 y1 1]'; % [a b c]
-
 l = F*[x1 y1 1]'; % [a b c]
 % Normalize
 s = l./sqrt(l(1)^2 + l(2)^2);
 v1 = [x1 y1];
-v2=[-s(2) s(1) s(2)*x1-s(1)*y1]'
-proj=round(cross(s,v2)) 
-x1
-y1
+v2=[-s(2) s(1) s(2)*x1-s(1)*y1]';
+proj=round(cross(s,v2)); 
 l = l/l(1);
 
 % Apply window
@@ -36,15 +32,16 @@ win = 5;
 % Gaussian Filter
 w = fspecial('gaussian',[2*win+1,2*win+1],2.5);
 
-X1 = round(proj(1)-win:proj(1)+win)
-Y1 = round(proj(2)-win:proj(2)+win)
-sim = size(im1)
+X1 = round(proj(1)-win:proj(1)+win);
+Y1 = round(proj(2)-win:proj(2)+win);
+sim = size(im1);
 patch1 = w.*im1(Y1,X1);
 
 error = 1000;
 threshold =10;
 
-
+x2 = 0;
+y2 = 0;
 for i = proj(2)-20:proj(2)+20
   x2temp = round(-l(2)*i - l(3));
   v2=[-s(2) s(1) s(2)*x2temp-s(1)*i]';
@@ -64,7 +61,6 @@ for i = proj(2)-20:proj(2)+20
    	end
    end
 end
-%%
-% save('q2_6.mat','F','p1','p2','P');
+
 end
 

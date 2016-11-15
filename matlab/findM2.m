@@ -45,13 +45,15 @@ displayEpipolarF(im1, im2, F)
 M1 = [eye(3) zeros(3,1)];
  
 for i = 1:size(M2s,3);
-    [Pm(:,:,i), error(i)] = triangulate(M1, pts1, M2s(:,:,i), pts2);
+    [Pm, error] = triangulate(K1*M1, pts1, K2*M2s(:,:,i), pts2);
+    if all(Pm(:,3)) > 0
+       P = Pm
+       M2 = M2s(:,:,i);
+    end       
+    
 end
 % If this does not work, check the value of Z for Pm. If less than zero,
 % then it does not work
-[~,I] = min(error);
-P = Pm(:,:,I);
-M2 = M2s(:,:,I);
 p1 = pts1;
 p2 = pts2;
 save('q2_5.mat','M2','p1','p2','P');
