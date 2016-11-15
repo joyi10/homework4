@@ -20,59 +20,47 @@ function [ x2temp, y2 ] = epipolarCorrespondence( im1, im2, F, x1, y1 )
 
 % line = F*[x1 y1 1]'; % [a b c]
 
-l = [x1 y1 1]*F; % [a b c]
+l = F*[x1 y1 1]'; % [a b c]
 % Normalize
-% s = l./sqrt(x1^2 + y1^2);
-
+s = l./sqrt(l(1)^2 + l(2)^2);
+v1 = [x1 y1];
+v2=[-s(2) s(1) s(2)*x1-s(1)*y1]'
+proj=round(cross(s,v2)) 
+x1
+y1
 l = l/l(1);
 
- % l = l./s
-
-%  if l(1) ~= 0
-   % ye = sy;
-    %ys = 1;
-    %xe = -(l(2) * ye + l(3))/l(1);
-    %xs = -(l(2) * ys + l(3))/l(1)
-  %else
-   % xe = sx
-    %xs = 1
-    %ye = -(l(1) * xe + l(3))/l(2);
-    %ys = -(l(1) * xs + l(3))/l(2)
-  %end
-% use one line and dont sweep along x. Sweep along y because its very
-% vertical
-
 % Apply window
-win = 10;
+win = 5;
 
 % Gaussian Filter
 w = fspecial('gaussian',[2*win+1,2*win+1],2.5);
 
-X1 = round(x1-win:x1+win);
-Y1 = round(y1-win:y1+win);
-
-%  im1(X1,Y1)
-patch1 = w.*im1(X1,Y1);
-
+X1 = round(proj(1)-win:proj(1)+win)
+Y1 = round(proj(2)-win:proj(2)+win)
+sim = size(im1)
+patch1 = w.*im1(Y1,X1);
 
 error = 1000;
 threshold =10;
 
 
-for i = 1+win:size(im2,2)-win
+for i = proj(2)-20:proj(2)+20
   x2temp = round(-l(2)*i - l(3));
-  X2 = round(x2temp-win:x2temp+win);
-  Y2 = round(i-win:i+win);
+  v2=[-s(2) s(1) s(2)*x2temp-s(1)*i]';
+  proj=round(cross(s,v2)); 
+  X2 = round(proj(1)-win:proj(1)+win);
+  Y2 = round(proj(2)-win:proj(2)+win);
    
    if (sum(X2 <= 0) == 0) && (sum(X2 > size(im2,1)) == 0) 
-       	patch2 = w.*im2(X2,Y2);
+       	patch2 = w.*im2(Y2,X2);
 	Temp_error = norm(patch2 - patch1);
 	% check if error is smaller than before and if distance between points
 	% is smaller than threshold
 	if (Temp_error < error) && (norm([x1-x2temp y1-i]) < threshold)
         	error = Temp_error;
-       		x2 = x2temp;
-       		y2 = i;
+       		x2 = proj(1);
+       		y2 = proj(2);
    	end
    end
 end
